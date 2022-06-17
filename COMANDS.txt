@@ -1,0 +1,163 @@
+https://capacitorjs.com/docs/getting-started
+https://www.youtube.com/watch?v=eL5YJVgFF4U&list=PLPjxbDJ8hiqGNoeqijexCQOge1NHDVndc&index=24
+
+ng new mobile
+
+add capacitor
+npm install @capacitor/core
+npm install @capacitor/cli --save-dev
+
+Se genera el archivo capacitor.config.ts
+
+npx cap init
+
+ng g c components/home
+
+ng generate module app-routing --flat --module=app
+
+then replace the app-routing.module with this
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HeroesComponent } from './heroes/heroes.component';
+
+const routes: Routes = [
+  { path: 'heroes', component: HeroesComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+
+<router-outlet></router-outlet>
+
+Dinamica de capacitor
+Capacitor necesita un directorio web
+Primer paso compilar la aplicacion
+
+ng build --prod
+Ya no se usa el --prod
+ng build 
+
+Con esto se genera una carpeta
+Que se llama dist, ahi esta la carpeta
+
+Capacitor necesita un directorio web
+Angular guarda esto en una carpeta. 
+Esto lo indicamos en el archivo capacitor.config.ts
+
+En la parte de web dir editamos
+webDir: 'dist',
+webDir: 'dist/mobile',
+
+El siguiente paso será agregar una plataforma mediante el comando
+https://capacitorjs.com/docs/android
+first
+npm install @capacitor/android
+
+Entonces
+npx cap add android
+Se crea una carpeta llamada android que es un proyecto de android studio
+npm install @capacitor/android
+
+abrir el proyecto de android studio desde terminal de vs code
+npx cap open android
+
+Capacitor automa copia lo que esta en la carpeta dist lo copia a la carpeta de los assets de android
+Si yo hago un cambio debo volver a copiar esta carpeta, no se hace automaticamente
+Se debe copiar el dist a las carpetas de assets de android
+
+Añadir
+AVD manager
+Descargar SO android
+Agregar una configuracion
+could not automatically detect an adb binary
+
+30% nativos y 70% web es capacitor
+Se corre mediante un webview en android se ejecuta con chrome y en ios con safari
+
+Cuando ya se hacen cambios, hay mas de una forma de compilar.
+
+//Omitir esto fue de prueba de Fireabase
+Agregando formulario
+y Firebase
+npm i @angular/fire
+npm i firebase
+ng add @angular/fire
+
+Solo
+npm install firebase @angular/fire --save
+ng add @angular/fire
+npm i @types/angularfire
+https://github.com/angular/angularfire
+tuto
+https://www.youtube.com/watch?v=aXYN4WUR-b0&list=PLPjxbDJ8hiqGNoeqijexCQOge1NHDVndc&index=54
+
+Intentar solo
+ng add @angular/fire
+y seguir documentacion
+
+Crear servicio
+https://github.com/domini-code/angular_11_firebase_bootstrap/blob/main/src/app/pages/contact/services/data.service.ts
+
+Seguir documentacion
+"strict": false,
+
+Angular Material
+https://www.tutorialesprogramacionya.com/angularya/detalleconcepto.php?punto=38&codigo=38&inicio=20
+ng add @angular/material
+
+Rules de firebase
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+//Aqui termina lo de Firebase
+
+Cuando hagamos cambios en el proyecto de angular debemos de ejecutar el comando
+ng serve
+ng build 
+npx cap sync
+npx cap copy
+npx cap open android
+
+para que los cambios se vean reflejados en el proyecto de android
+
+APIS NATIVAS
+Plugins oficiales que han sido creados
+https://capacitorjs.com/docs/apis/geolocation
+
+Geolocation
+npm install @capacitor/geolocation
+npx cap sync
+
+then
+async getCurrentPosition (){
+    this.ubicacion.lat = await (await Geolocation.getCurrentPosition()).coords.latitude;
+    this.ubicacion.long = await (await Geolocation.getCurrentPosition()).coords.longitude;
+  };
+
+
+Es necesario tener activada la ubicación <- Solicitar permisos la primra vez que se inicia la aplicacion
+
+https://stackoverflow.com/questions/43490761/ionic-2-set-interval
+https://capacitorjs.com/docs/v2/apis/background-task
+
+https://capacitorjs.com/docs/apis/network
+
+
+https://capacitorjs.com/docs/apis/filesystem
+https://capacitorjs.com/docs/apis/storage
+
+Usando local storage en android
+npm install @capacitor/storage
+npx cap 
+npx cap sync
+https://capacitorjs.com/docs/apis/storage

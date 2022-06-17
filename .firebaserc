@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ngnotas-1d78f": {
+      "hosting": {
+        "mobile": [
+          "ngnotas-1d78f"
+        ]
+      }
+    }
+  }
+}

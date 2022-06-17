@@ -1,0 +1,29 @@
+<div class="contenedor">
+  <mat-card>{{ online }}</mat-card>
+  <br />
+  <mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="nota"
+      type="string"
+      placeholder="Ingrese alguna nota"
+    />
+  </mat-form-field>
+  <br />
+
+  <button mat-raised-button color="primary" (click)="registrar()">
+    Registrar
+  </button>
+
+  <br />
+  <mat-card>Notas pendientes a subir</mat-card>
+  <mat-list>
+    <mat-list-item *ngFor="let ubicacion of my_ubic_offline">
+      <mat-icon matListIcon>></mat-icon>
+      <h3 matLine> {{ ubicacion.ubication.id }} </h3>
+      <p matLine>
+        <span> {{ ubicacion.ubication.nota }} </span>
+      </p>
+    </mat-list-item>
+  </mat-list>
+</div>
